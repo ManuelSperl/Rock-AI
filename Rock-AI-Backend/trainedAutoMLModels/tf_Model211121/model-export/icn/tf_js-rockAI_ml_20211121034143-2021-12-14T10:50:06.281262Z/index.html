@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://unpkg.com/@tensorflow/tfjs"></script>
+<script src="https://unpkg.com/@tensorflow/tfjs-automl"></script>
+<img id="image00_01" crossorigin="anonymous" src="https://storage.googleapis.com/rock-ai-us-central1/images/image00_01.jpeg" width="2000" height="2000">
+<script>
+async function run() {
+  const model = await tf.automl.loadImageClassification('model.json');
+  const image = document.getElementById('image00_01');
+  const predictions = await model.classify(image);
+  console.log(predictions);
+  // Show the resulting object on the page.
+  const pre = document.createElement('pre');
+  pre.textContent = JSON.stringify(predictions, null, 2);
+  document.body.append(pre);
+}
+run();
+</script>

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+// execute protoc --dart_out=. lib/databaseStructure.proto  to get .pb.dart files
+message Homogenbereich {
+
+    string name = 1;
+
+    enum Gebirgsverhaltenstyp {
+        STANDFEST = 0;
+        NACHBRUECHIG = 1;
+        AUFGELOCKERT = 2;
+        ZERLEGT = 3;
+    }
+
+    enum BERGWASSEREINFLUSS {
+        KEIN_BE= 0;
+        GERING_BE = 1;
+        HOCH = 2;
+    }
+
+    enum Vegetaionseinfluss {
+        KEIN_VE = 0;
+        VERBESSERND = 1;
+        VERSCHLECHTERND = 2;
+    }
+
+    enum GEFAEHRDUNGSKLASSE {
+        SEHR_GERING_GK = 0;
+        GERING_GK = 1;
+        MITTEL_GK = 2;
+        HOCH_GK = 3;
+    }
+}
+//to create definitions for procedures 
+service HomogenbereichService {
+    rpc gethb(hbRequest) returns (hbResponse) {};
+}
+
+message hbRequest {
+    int32 name = 1;
+}
+
+message hbResponse {
+    // list of Homogenbereich
+    repeated Homogenbereich hbs = 1;
+}
