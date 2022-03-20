@@ -1,10 +1,10 @@
-# Backend Documentation
+# [Backend Documentation](https://github.com/ManuelSperl/Rock-AI/blob/main/Rock-AI-Backend/Dokumentation_Backend_ML.pdf)
 ## Data Storage and Preprocessing
 Two self-written Python programs are used to fetch the records from the API https://health.api.makia.ml and store them in a custom format in the Firebase Firestore (images are stored in the Firebase Storage).
 
 ### [API_Request_generate_JSON.py](https://github.com/ManuelSperl/Rock-AI/tree/main/Rock-AI-Backend/API_Requests)
 This file first fetches the records from the above URL as a JSON file and stores the data in local lists and variables. It then stores the corresponding images in a local folder and uploads them to the Firebase storage. In order to store the images in the Firestore database later, the https token of each image is also stored locally. Finally, the script generates a JSON file in a user-defined format for the desired structure in the Firestore database.
-It also creates a CSV file that labels all the images for machine learning training. (See in the documentation under step 1 under Setting up an exportable model).
+It also creates a CSV file that labels all the images for machine learning training. (See in the [documentation](https://github.com/ManuelSperl/Rock-AI/blob/main/Rock-AI-Backend/Dokumentation_Backend_ML.pdf) under step 1 under Setting up an exportable model).
 More detailed documentation can be found in the [Python file](https://github.com/ManuelSperl/Rock-AI/blob/main/Rock-AI-Backend/API_Requests/API_Request_generateJSON.py).
 
 ### [uploadJSONFileToFirestore.py](https://github.com/ManuelSperl/Rock-AI/blob/main/Rock-AI-Backend/UploadJsonToFirebase/uploadJsonFileToFirestore.py)
@@ -31,4 +31,4 @@ In the file [References Image Augmentation for Machine Learning.pdf](https://git
 ## Machine Learning with Google AutoML
 For the machine learning process, the machine learning function provided by Firebase was used. An in-depth [documentation](https://github.com/ManuelSperl/Rock-AI/blob/main/Rock-AI-Backend/Dokumentation_Backend_ML.pdf) explains all of the steps that were performed (documentation is written in German). </br>
 All of the trained models for local use can be found in the [trainedAutoMLModels](https://github.com/ManuelSperl/Rock-AI/tree/main/Rock-AI-Backend/trainedAutoMLModels) folder. There are four models which were trained to do perform a single-labeling on the pictures with the attribute "GEFÄHRDUNGSKLASSE". Additionally there is one model which was trained to execute a multi-labeling on the picture. 
-Further details about the models, e.g. how many pictures were used for the training, can be found in the documentation.
+Further details about the models, e.g. how many pictures were used for the training, can be found in the [documentation](https://github.com/ManuelSperl/Rock-AI/blob/main/Rock-AI-Backend/Dokumentation_Backend_ML.pdf).
